@@ -52,7 +52,7 @@ function App() {
           <Route path='/products' exact>
             <Products list={DummyProductsList}/>
           </Route>
-          <Route path='/products/:productId' exact> {/* productId called be a value linked to something else like an id no we could use inside a api fetch */}
+          <Route path='/products/:productId' exact> 
             <ProductDetail  listData={DummyProductsList}/>
           </Route>
         </Switch>
