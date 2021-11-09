@@ -1,9 +1,12 @@
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { Fragment } from 'react';
+
 import MainHeader from './components/MainHeader';
 import Landing from './pages/Landing';
 import Welcome from './pages/Welcome';
 import Products from './pages/Products';
-import { Fragment } from 'react';
+import ProductDetail from './pages/ProductDetail';
+
 
 // ============================= Notes =============================
 // import { Route } from 'react-router-dom';
@@ -11,27 +14,55 @@ import { Fragment } from 'react';
 // we can render components, inbetween Route opening and closing tages. <Route>.........</Route>
 // check index.js for <BrowserRouter> needed to use <Router>
 // separate components loaded by Router into a folder (pages)
+
+// <Switch> - is unique in that it renders a route exclusively...
+//  https://v5.reactrouter.com/web/api/Switch
 // =================================================================
 
 function App() {
+
+  const DummyProductsList = [
+    {
+      id: "552531",
+      name: "Water bottle",
+    },
+    {
+      id: "522523",
+      name: "A Book About React",
+    },
+    {
+      id: "552374",
+      name: "Online course",
+    },
+  ];
+
   return (
     <Fragment>
       <header>
         <MainHeader />
       </header>
       <main>
-      <Route path='/'>
-        <Landing />
-      </Route>
-      <Route path='/welcome'>   {/* our-domain.com/welcome */}
-        <Welcome />
-      </Route>
-      <Route path='/products'> {/* path */}
-        <Products />
-      </Route>
+        <Switch>
+          <Route path='/' exact>
+            <Landing />
+          </Route>
+          <Route path='/welcome' exact> {/* path */}
+            <Welcome />
+          </Route>
+          <Route path='/products' exact>
+            <Products list={DummyProductsList}/>
+          </Route>
+          <Route path='/products/:productId' exact> {/* productId called be a value linked to something else like an id no we could use inside a api fetch */}
+            <ProductDetail  listData={DummyProductsList}/>
+          </Route>
+        </Switch>
       </main>
     </Fragment>
   );
 };
 
+// paths
+// our-domain.com/welcome => welcome Component
+// our-domain.com/products => Products Component
+// our-domain.com/products-detail/ <any value>
 export default App;
