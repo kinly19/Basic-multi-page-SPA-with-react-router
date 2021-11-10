@@ -1,4 +1,5 @@
-import { useParams } from "react-router";
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom'
 
 // =============================== Notes ===============================
 // useParams - Returns an object of the params for the route rendered 
@@ -22,6 +23,8 @@ const ProductDetail = (props) => {
       <h2>{objList[0].name}</h2>
       <p>{params.productId}</p>
       {/* <p>Page Params is {params.productId}</p> */}
+
+      <button><Link to='/products'>Back</Link></button>
     </section>
   );
 };
