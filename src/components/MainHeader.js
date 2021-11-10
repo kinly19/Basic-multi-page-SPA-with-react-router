@@ -2,7 +2,8 @@ import { NavLink } from 'react-router-dom'; //https://v5.reactrouter.com/web/api
 import './MainHeader.scss';
 
 // ============================== Notes ==============================
-// NavLink -  A special version of the <NavLink> that will add styling attributes 
+// <Link> - The Link component is used to navigate the different routes on the site
+// <NavLink> - A special version of the <Link> that will add styling attributes 
 //  to the rendered element when it matches the current URL.
 //====================================================================
 
@@ -12,7 +13,7 @@ const MainHeader = () => {
       <nav> 
         <ul>
           <li>
-            <NavLink activeClassName='active'to="/landing">Home</NavLink>
+            <NavLink activeClassName='active'to="/">Home</NavLink>
           </li>
         </ul>
         <ul>
