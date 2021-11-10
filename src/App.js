@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { Fragment } from 'react';
 
 import MainHeader from './components/MainHeader';
@@ -17,6 +17,9 @@ import ProductDetail from './pages/ProductDetail';
 
 // <Switch> - is unique in that it renders a route exclusively...
 //  https://v5.reactrouter.com/web/api/Switch
+
+// exact - When true, will only match if the path matches the location.pathname exactly.
+// <Redirect /> - allows us to redirect users somewhere else 
 // =================================================================
 
 function App() {
@@ -45,14 +48,15 @@ function App() {
         <Switch>
           <Route path='/' exact>
             <Landing />
+            {/* <Redirect to='/welcome'/> */}
           </Route>
-          <Route path='/welcome' exact> {/* path */}
+          <Route path='/welcome'> {/* path */}
             <Welcome />
           </Route>
           <Route path='/products' exact>
             <Products list={DummyProductsList}/>
           </Route>
-          <Route path='/products/:productId' exact> 
+          <Route path='/products/:productId'> 
             <ProductDetail  listData={DummyProductsList}/>
           </Route>
         </Switch>
